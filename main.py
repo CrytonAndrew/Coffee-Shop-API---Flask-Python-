@@ -128,6 +128,21 @@ def update_cafe_price(cafe_id):
         ), 404
 
 
+@app.route("/delete/<cafe_id>", methods=["DELETE"])
+def delete_cafe(cafe_id):
+    authentication_key = "aksfhkjshfkdhfiowehfodhf"
+    if request.args.get("auth_key") == authentication_key:
+        Cafe.query.filter_by(id=cafe_id).delete()
+        db.session.commit()
+        return jsonify(
+            reponse={f"Success": f"Cafe with id: {cafe_id} was deleted"}
+        ), 200
+
+    return jsonify(
+        response={f"Auth failed": f"Not authenticated to make such an action"}
+    ), 404
+
+
 @app.route("/add", methods=["GET", "POST"])
 def add_cafe():
     if request.method == "POST":
