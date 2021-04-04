@@ -56,37 +56,18 @@ def random_cafe():
     cafe = Cafe.query.filter_by(id=f'{random_id}').first()
     print(cafe)
     if request.method == "GET":
-
-        can_take_calls = cafe.can_take_calls
-
-        coffee_price = cafe.coffee_price
-
-        has_sockets = cafe.has_sockets
-
-        has_toilets = cafe.has_toilet
-
-        has_wifi = cafe.has_wifi
-
-        id = cafe.id
-
-        img_url = cafe.img_url
-        location = cafe.location
-        map_url = cafe.map_url
-        name = cafe.name
-        seats = cafe.seats
-
         return jsonify(
-            can_take_calls=can_take_calls,
-            coffee_price=coffee_price,
-            has_sockets=has_sockets,
-            has_toilets=has_toilets,
-            has_wifi=has_wifi,
-            id=id,
-            img_url=img_url,
-            location=location,
-            map_url=map_url,
-            name=name,
-            seats=seats,
+            can_take_calls=cafe.can_take_calls,
+            coffee_price=cafe.coffee_price,
+            has_sockets=cafe.has_sockets,
+            has_toilets=cafe.has_toilets,
+            has_wifi=cafe.has_wifi,
+            id=cafe.id,
+            img_url=cafe.img_url,
+            location=cafe.location,
+            map_url=cafe.map_url,
+            name=cafe.name,
+            seats=cafe.seats,
         )
 
 
